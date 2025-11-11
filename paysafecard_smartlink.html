@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Redirect</title>
+<script>
+function redirect() {
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+  var ios = /iPad|iPhone|iPod/.test(ua);
+  var android = /Android/.test(ua);
+
+  var iosUrl = "https://apps.apple.com/bg/app/paysafecard-prepaid-payments/id588324792?utm_source=qr_code&utm_medium=ooh&utm_campaign=app_download";
+  var androidUrl = "https://play.google.com/store/apps/details?id=at.paysafecard.android&utm_source=qr_code&utm_medium=ooh&utm_campaign=app_download";
+
+  if (ios) {
+    window.location.href = iosUrl;
+  } else if (android) {
+    window.location.href = androidUrl;
+  } else {
+    // Fallback landing if device is unknown
+    document.getElementById("fallback").style.display = "block";
+  }
+}
+</script>
+</head>
+<body onload="redirect()" style="font-family: Arial; padding: 40px;">
+<h2>Redirecting…</h2>
+<div id="fallback" style="display:none;">
+  <p>Please choose your platform:</p>
+  <p><a href="https://apps.apple.com/bg/app/paysafecard-prepaid-payments/id588324792?utm_source=qr_code&utm_medium=ooh&utm_campaign=app_download">iOS App Store</a></p>
+  <p><a href="https://play.google.com/store/apps/details?id=at.paysafecard.android&utm_source=qr_code&utm_medium=ooh&utm_campaign=app_download">Google Play Store</a></p>
+</div>
+</body>
+</html>
